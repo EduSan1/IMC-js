@@ -22,7 +22,15 @@ function mostrarResultado() {
     if (imc < 18.5) {
       status = " e vc está abaixo do peso";
     } else if (imc < 25 && imc >= 18.5) {
-      status = " e vc está com peso ideal";
+        // const verde = document.getElementById("verde").textContent="Nice";
+        // let verde = document.getElementById("verde");
+        // Mytxt = document.createTextNode("New text");
+        // verde.appendChild(Mytxt);
+        // Myspan = document.getElementById("SpanID");
+        // Mytxt = document.createTextNode("New text");
+        // Myspan.appendChild(Mytxt);
+        // document.getElementById("SpanID").textContent="New Text";
+      status =` e vc está com peso ideal,`;
     } else if (imc < 30 && imc >= 25) {
       status = " e vc está levemente acima do peso";
     } else if (imc < 35 && imc >= 30) {
