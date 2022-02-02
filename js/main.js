@@ -1,24 +1,21 @@
 "use strict";
 
-function camposValidos() {
-  return document.getElementById("form").reportValidity();
-}
+import { iniciarRange } from "./iniciarRange.js";
 
-function calcularImc(peso, altura) {
-  return peso / (altura * altura);
-}
+const camposValidos = () => document.getElementById("form").reportValidity();
+
+const calcularImc = (peso, altura) => peso / (altura * altura);
+
 
 function mostrarResultado() {
   const nome = document.getElementById("nome").value;
   const altura = document.getElementById("altura").value;
   const peso = document.getElementById("peso").value;
   const resultado = document.getElementById("resultado");
-  let span = null;
-  // const verde = document.getElementById("verde");
-
   const imc = calcularImc(peso, altura);
   console.log(imc);
   let status;
+  let span = null;
 
   if (camposValidos()) {
     if (imc < 18.5) {
@@ -30,15 +27,6 @@ function mostrarResultado() {
       span.setAttribute("class", "verde");
       let texto = document.createTextNode(" Legal!");
       span.appendChild(texto);
-      // const verde = document.getElementById("verde").textContent="Nice";
-      // let verde = document.getElementById("verde");
-      // Mytxt = document.createTextNode("New text");
-      // verde.appendChild(Mytxt);
-      // Myspan = document.getElementById("SpanID");
-      // Mytxt = document.createTextNode("New text");
-      // Myspan.appendChild(Mytxt);
-      // document.getElementById("SpanID").textContent="New Text";
-      
     } else if (imc < 30 && imc >= 25) {
       status = " e vc está levemente acima do peso";
       span = document.createTextNode("");
@@ -54,11 +42,9 @@ function mostrarResultado() {
       span.setAttribute("class", "vermelho");
       let texto = document.createTextNode(" Cuidado!");
       span.appendChild(texto);
-
-    }      
+    }
     resultado.textContent = `${nome} seu imc é ${imc.toFixed(2)} ${status}`;
     resultado.appendChild(span);
-
   } else {
     alert("Preencha todos os campos");
     resultado.textContent = ``;
@@ -66,3 +52,5 @@ function mostrarResultado() {
 }
 
 document.getElementById("calcular").addEventListener("click", mostrarResultado);
+iniciarRange("altura");
+iniciarRange("peso");
